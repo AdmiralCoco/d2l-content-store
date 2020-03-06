@@ -86,21 +86,23 @@ class ColumnHeaderChoice extends LitElement {
 		return [css`
 			:host {
 				display: none;
-				cursor: pointer;
 			}
 			:host([current-choice]) {
 				display: block;
 			}
-
+			.header-text {
+				display: inline-block;
+				cursor: pointer;
+			}
 			d2l-icon {
 				display: none;
 				margin-left: 0.5em;
 				padding-bottom: 0.2em;
 			}
-			:host([current-sort]:not([current-sort-desc])) d2l-icon.down {
+			:host([current-sort]:not([current-sort-desc])) d2l-icon.up {
 				display: inline-block;
 			}
-			:host([current-sort][current-sort-desc]) d2l-icon.up {
+			:host([current-sort][current-sort-desc]) d2l-icon.down {
 				display: inline-block;
 			}
 		`];
@@ -121,7 +123,7 @@ class ColumnHeaderChoice extends LitElement {
 
 	render() {
 		return html`
-			<div @click=${this.toggleSort}>
+			<div class="header-text" @click=${this.toggleSort}>
 				${this.label}
 				<d2l-icon class="up" icon="tier1:chevron-up"></d2l-icon>
 				<d2l-icon class="down" icon="tier1:chevron-down"></d2l-icon>
