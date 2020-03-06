@@ -112,7 +112,7 @@ class ContentList extends DependencyRequester(InternalLocalizeMixin(LitElement))
 				<div id="d2l-content-store-list" class="d2l-navigation-gutters">
 					${this.renderNotFound()}
 					${this.contentItems.map(item => this.renderContentItem(item))}
-					${this.renderGhosts(this.loading ? 5 : 0)}
+					${this.renderGhosts()}
 				</div>
 			</content-file-drop>
 		`;
@@ -138,8 +138,8 @@ class ContentList extends DependencyRequester(InternalLocalizeMixin(LitElement))
 		`;
 	}
 
-	renderGhosts(count) {
-		return new Array(count).fill().map(() => html`
+	renderGhosts() {
+		return new Array(this.loading ? 5 : 0).fill().map(() => html`
 			<d2l-list><content-list-item-ghost></content-list-item-ghost></d2l-list>
 		`);
 	}

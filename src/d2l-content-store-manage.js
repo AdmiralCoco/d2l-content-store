@@ -146,10 +146,9 @@ class D2lContentStoreManage extends DependencyRequester(PageViewElement) {
 
 	renderPrimary() {
 		return html`
-			<div>
-				<content-page class="page" ?active=${this.page === 'content'}></content-page>
-				<trash-page class="page" ?active=${this.page === 'trash'}></trash-page>
-			</div>`;
+			<content-page class="page" ?active=${this.page === 'content'}></content-page>
+			<trash-page class="page" ?active=${this.page === 'trash'}></trash-page>
+		`;
 	}
 
 	loadSubView(subView) {
@@ -176,17 +175,15 @@ class D2lContentStoreManage extends DependencyRequester(PageViewElement) {
 
 	render() {
 		return html`
-			<div>
-				<two-column-layout>
-					<div slot="sidebar">
-						${this.renderSidebar()}
-					</div>
-					<div slot="primary">
-						${this.renderPrimary()}
-					</div>
-				</two-column-layout>
-				<upload-status-management id="upload-status-management"></upload-status-management>
-			</div>
+			<two-column-layout>
+				<div slot="sidebar">
+					${this.renderSidebar()}
+				</div>
+				<div slot="primary">
+					${this.renderPrimary()}
+				</div>
+			</two-column-layout>
+			<upload-status-management id="upload-status-management"></upload-status-management>
 		`;
 	}
 
